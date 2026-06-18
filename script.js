@@ -1,4 +1,8 @@
+//#region select tags
 const body = document.body;
+
+const main = document.querySelector("main");
+
 const theme = document.querySelector("#theme");
 
 const search = document.querySelector("#search");
@@ -18,35 +22,120 @@ const formDescription = document.querySelector('#formDescription');
 const formTags = document.querySelector('#formTags');
 
 const submit = document.querySelector('#submit');
-
+//#endregion select tags
 
 
 let tagsArr = [
-    { tag: 'Normal', color: 'green' },
-    { tag: 'Urgent', color: 'orange' },
-    { tag: 'Important', color: 'red' }
+    { tag: 'Normal', color: 'rgb(47, 164, 59)' },
+    { tag: 'Urgent', color: 'rgb(261, 140, 4)' },
+    { tag: 'Important', color: 'rgb(238, 1, 3)' }
 ];
 function tagType(tag, color) {
     this.tag = tag;
     this.color = color;
 }
 
-let tasks = [
-    // {
-    //     title: 'Task 1',
-    //     description: 'Description 1',
-    //     tags: { tag: 'Normal', color: 'green' }
-    // },
-    // {
-    //     title: 'Task 2',
-    //     description: 'Description 2',
-    //     tags: { tag: 'Urgent', color: 'orange' }
-    // },
-    // {
-    //     title: 'Task 3',
-    //     description: 'Description 3',
-    //     tags: { tag: 'Important', color: 'red' }
-    // }
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [ 
+    {
+        title: 'Task 1',
+        description: 'Description 1',
+        tags: { tag: 'Normal', color: 'green' }
+    },
+    {
+        title: 'Task 2',
+        description: 'Description 2',
+        tags: { tag: 'Urgent', color: 'orange' }
+    },
+    {
+        title: 'Task 3',
+        description: 'Description 3',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    },
+    {
+        title: 'Task 5',
+        description: 'Description 4 loLorem ipsum, dolor sit amet consectetur adipisicing elit. Velit alias quos ducimus laboriosam, iure dolorum ipsa dolorem doloremque corrupti provident hic ea quaerat sapiente magni aliquid blanditiis beatae excepturi iusto suscipit dignissimos. Cumque harum molestiae in, dolore incidunt aliquam iure officia illo veritatis error? Quia dolore libero illum nisi ullam.rem50',
+        tags: { tag: 'Important', color: 'red' }
+    }
 ];
 function task(title, description, tags) {
     this.title = title;
@@ -55,26 +144,47 @@ function task(title, description, tags) {
 }
 
 
-
 function card(index, title, description, tag, tagColor) {
+    title =  (title.length > 10 ? title.substring(0, 10) + '...' : title);
+
     return `
         <div class="card">
-            <h3 class="title">${title}</h3>
+            <div class="card-top">
+                <h3 class="title">${title}</h3>
+                <input type="checkbox" name="select" id="select" />
+            </div>
             <p class="description">${description}</p>
             <div class="tags">
-                <span class="${tag}" style="background-color: ${tagColor};">${tag}</span>
+                <span class="${tag} card-tag-${index}" style="background-color: ${tagColor};">${tag}</span>
             </div>
             <div class="card-btns">
                 <i class="ri-edit-box-line edit" onclick="edit(${index})"></i>
                 <i class="ri-delete-bin-6-line delete" onclick="del(${index})"></i>
             </div>
         </div>
-    `
+    `;
 }
 
 function themeToggler() {
     theme.innerHTML = (body.classList.toggle("dark"))
-        ? '<i class="ri-moon-line"></i>' : '<i class="ri-sun-line"></i>';
+        ? '<i class="ri-moon-line"></i>' 
+        : '<i class="ri-sun-line"></i>';
+        
+}
+function loadTags() {
+    let str = '<option value="">All</option>'; 
+
+    tags.innerHTML = '';
+    tags.innerHTML = str;
+    
+    str = "";
+    tagsArr.forEach(({ tag, color }) => { 
+        str += `<option value="${tag}" style="background-color: ${color};">${tag}</option>`; 
+    });
+    tags.innerHTML += str;
+
+    formTags.innerHTML = ''; 
+    formTags.innerHTML = str;
 }
 
 function loadTasks(paramTasks=tasks) {
@@ -85,22 +195,31 @@ function loadTasks(paramTasks=tasks) {
         });
     }
 }
+
 function searchTask() {
-    let paramTasks = tasks.filter(({ title, tags }) => { 
-        if (tags.value === ""  && search.value.trim() === "") return true;  
-        else if (tags.value === ""  && search.value.trim() !== "") 
-            return title.toLowerCase().includes(search.value.toLowerCase());  
-        else if (tags.value !== ""  && search.value.trim() === "") 
-            return tags.tag === tags.value; 
-        else 
-        return tags.tag === tags.value && title.toLowerCase().includes(search.value.toLowerCase());  
+    const selectedTag = tags.value;
+    const searchText = search.value.trim().toLowerCase();
+
+    const paramTasks = tasks.filter(task => {
+        if (selectedTag === "" && searchText === "") return true;
+        if (selectedTag === "" && searchText !== "") return task.title.toLowerCase().includes(searchText); 
+        if (selectedTag !== "" && searchText === "") return task.tags.tag === selectedTag;
+        return task.tags.tag === selectedTag && task.title.toLowerCase().includes(searchText); 
     });
+
     loadTasks(paramTasks);
 }
 
+function clearSearch() {
+    search.value = '';
+    tags.value = '';
+    loadTasks();
+}
+
+
 function loadForm(index = -1) {
-    formDiv.style.display = 'flex';
     form.reset();
+    formDiv.style.display = 'flex';
 
     if (index < 0) {
         formTags.value = tagsArr[0].tag;
@@ -126,6 +245,7 @@ function loadForm(index = -1) {
 }
 
 
+
 function edit(index) { 
     loadForm(index); 
 }
@@ -138,17 +258,9 @@ function del(index) {
 }
 
 
-function preLoad() {
-    if (localStorage.getItem("tasks")) {
-        tasks = JSON.parse(localStorage.getItem("tasks"));
-    }
-    
-    let str = '<option value="">All<option>'; 
-    tagsArr.forEach(({ tag }) => { str += `<option value="${tag}">${tag}</option>`; });
-    tags.innerHTML = str;
-
-
-    themeToggler();
+function preLoad() {    
+    loadTags(); 
+    themeToggler(); 
     loadTasks();
 }
 
@@ -156,18 +268,17 @@ preLoad();
 
 
 theme.addEventListener("click", themeToggler);
-
 search.addEventListener('keyup', () => { searchTask(); });
-
-// tags.addEventListener('mouseleaven', () => { searchTask(); });
-
+tags.addEventListener('change', () => { searchTask(); });
 taskAdd.addEventListener('click', () => { loadForm(); });
-
+formTags.addEventListener('change', () => {
+    formTags.style.backgroundColor = tagsArr[tagsArr.findIndex(e => e.tag === formTags.value)].color;    
+});
 cancel.addEventListener('click', (e) => {
     formDiv.style.display = 'none';
-    form.reset();
+    form.reset();   
+    clearSearch();
 });
-
 submit.addEventListener('click', (e) => {
     e.preventDefault();
     let title = formTitle.value;
@@ -179,10 +290,10 @@ submit.addEventListener('click', (e) => {
 
     let taskTag = new tagType(tag, color);
     let newTask = new task(title, description, taskTag);
-    tasks.push(newTask);
+    tasks.unshift(newTask);
     localStorage.setItem("tasks", JSON.stringify(tasks));
     loadTasks();
     formDiv.style.display = 'none';
     form.reset();
+    clearSearch();
 });
-
