@@ -25,11 +25,24 @@ const submit = document.querySelector('#submit');
 //#endregion select tags
 
 
+if (!localStorage.getItem("isDarkMode")) 
+    localStorage.setItem('isDarkMode', JSON.stringify(window.matchMedia('(prefers-color-scheme: dark)').matches));
+    
+
+const isDarkMode = Boolean(JSON.parse(localStorage.getItem("isDarkMode")));
+
+
+
+
+
+
+
 let tagsArr = [
     { tag: 'Normal', color: 'rgb(47, 164, 59)' },
     { tag: 'Urgent', color: 'rgb(261, 140, 4)' },
     { tag: 'Important', color: 'rgb(238, 1, 3)' }
 ];
+
 function tagType(tag, color) {
     this.tag = tag;
     this.color = color;
@@ -137,6 +150,7 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [
         tags: { tag: 'Important', color: 'red' }
     }
 ];
+
 function task(title, description, tags) {
     this.title = title;
     this.description = description;
@@ -165,12 +179,11 @@ function card(index, title, description, tag, tagColor) {
     `;
 }
 
-function themeToggler() {
-    theme.innerHTML = (body.classList.toggle("dark"))
-        ? '<i class="ri-moon-line"></i>' 
-        : '<i class="ri-sun-line"></i>';
-        
-}
+function themeToggler() { 
+    let isDarkMode = body.classList.toggle("dark"); 
+    localStorage.setItem('isDarkMode', JSON.stringify(isDarkMode));
+    theme.innerHTML = (isDarkMode) ? '<i class="ri-sun-line"></i>' : '<i class="ri-moon-line"></i>'; 
+} 
 function loadTags() {
     let str = '<option value="">All</option>'; 
 
@@ -202,9 +215,9 @@ function searchTask() {
 
     const paramTasks = tasks.filter(task => {
         if (selectedTag === "" && searchText === "") return true;
-        if (selectedTag === "" && searchText !== "") return task.title.toLowerCase().includes(searchText); 
-        if (selectedTag !== "" && searchText === "") return task.tags.tag === selectedTag;
-        return task.tags.tag === selectedTag && task.title.toLowerCase().includes(searchText); 
+        if (selectedTag === "" && searchText !== "") return (task.title.toLowerCase().includes(searchText) || task.description.toLowerCase().includes(searchText)); 
+        if (selectedTag !== "" && searchText === "") return task.tags.tag === selectedTag; 
+        return task.tags.tag === selectedTag && ( task.title.toLowerCase().includes(searchText) || task.description.toLowerCase().includes(searchText) );  
     });
 
     loadTasks(paramTasks);
@@ -258,9 +271,9 @@ function del(index) {
 }
 
 
-function preLoad() {    
+function preLoad() { 
     loadTags(); 
-    themeToggler(); 
+    if (isDarkMode) themeToggler(); 
     loadTasks();
 }
 
