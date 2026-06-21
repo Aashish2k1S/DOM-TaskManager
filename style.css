@@ -6,6 +6,7 @@
 
     --edit-color: rgb(255, 166, 0);
     --delete-color: rgb(255, 0, 0);
+    --complete-color: rgb(47, 164, 59);
 
     --font: Verdana, Geneva, Tahoma, sans-serif;
 
@@ -93,7 +94,7 @@ ul {
     width: 100%;
     list-style-type: none;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
@@ -104,16 +105,20 @@ li:nth-child(1) {
 
 #logo {
     display: none;
-    width: 100%;
     width: 2rem;
     height: 2rem;
 }
 
+li:nth-child(2) {
+    flex: 1;
+}
+
 #mid {
     width: 100%;
+    /* background-color: red; */
     display: flex;
     flex-flow: row nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     gap: 0.25rem;
     border: none;
@@ -121,8 +126,8 @@ li:nth-child(1) {
 
 #search {
     width: 100%;
-    /* padding: 0.5rem 15rem 0.5rem 1rem; */
-    padding: 0.5rem 7rem 0.5rem 1rem;
+    /* flex: 1; */
+    padding: 0.5rem 1rem;
     outline: none;
     border: none;
     border-radius: var(--radius-l) 0 0 var(--radius-l);
@@ -173,8 +178,76 @@ li:nth-child(1) {
     transform: scale(0.99);
 }
 
+
+li:nth-child(3) {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+}
+
+#counts{
+    flex-shrink: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.2rem;
+}
+#pending, #complete  {    
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    background-color: var(--transparent-color);
+    color: var(--secondary-color);
+    font-size: var(--font-size-s);
+    cursor: pointer;
+    box-shadow: var(--shadow) var(--shadow-color);
+    transition: var(--transition);
+}
+#pending {
+    border-radius: var(--radius-l) 0 0 var(--radius-l);
+}
+#pending i {
+    color: var(--edit-color);
+}
+#complete {
+    border-radius: 0 var(--radius-l) var(--radius-l) 0;
+}
+#complete i {
+    color: var(--complete-color);
+}
+
+#delAllTasks {
+    flex-shrink: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; 
+    padding: 0.5rem 1rem; 
+    font-size: var(--font-size-s);
+    border: none;
+    outline: none;
+    border-radius: var(--radius-l);
+    background-color: var(--transparent-color);
+    color: var(--secondary-color);
+    cursor: pointer;
+    box-shadow: var(--shadow) var(--shadow-color);
+    transition: var(--transition);
+}
+#delAllTasks:hover {
+    box-shadow: none;
+    transform: scale(0.99);
+    color: var(--delete-color);
+}
+#delAllTasks i {
+    color: var(--delete-color);
+}
+
 #theme {
-    width: 100%;
+    flex-shrink: 0;
     padding: 0.5rem 1rem;
     border: none;
     outline: none;
@@ -230,12 +303,12 @@ li:nth-child(1) {
 }
 
 .card-top .select {
-    width: 2rem;
-    height: 2rem;
+    width: 1rem;
+    height: 1rem;
 }
 
 .title {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
     margin-bottom: 0.5rem;
 }
 
@@ -392,6 +465,49 @@ form .bottom #submit:hover {
     transform: scale(0.99);
 }
 
+
+#dom {
+    position: fixed;
+    bottom: 10%;
+    right: 2%;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    border-radius: var(--radius-l);
+    background-color: var(--transparent-color);
+    color: var(--secondary-color);
+    font-size: var(--font-size-s);
+    font-weight: var(--font-weight-m);
+    cursor: pointer;
+    box-shadow: 0 0 2rem var(--secondary-color);
+    transition: var(--transition);
+}
+#dom:hover {
+    box-shadow: none;
+    transform: scale(0.99);
+}
+
+#dom i {
+    color: var(--edit-color);
+}
+
+#dom::after {
+    content: "";
+    padding: 0.3rem;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--delete-color);
+    position: absolute;
+    top: -10%;
+    right: 0;
+}
+
+#dom:hover::after {
+    content: "";
+    background-color: transparent;
+}
+
 @media (min-width: 768px) {
     /* Tablets */
     main h1 {
@@ -403,6 +519,7 @@ form .bottom #submit:hover {
     #logo {
         display: block;
     }
+
     #hero {
         column-count: 3;
         column-gap: 1rem;
@@ -410,6 +527,10 @@ form .bottom #submit:hover {
     .card {
         width: calc((100vw / 3) - 2rem);
     }
+    .title {
+    font-size: var(--font-size-m);
+    margin-bottom: 0.5rem;
+}
 }
 
 @media (min-width: 1024px) {
@@ -422,6 +543,10 @@ form .bottom #submit:hover {
     }
     #logo {
         display: block;
+    }
+    #search {        
+        width: auto;
+        flex: 0.5;
     }
     #hero {
         column-count: 4;

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <link preload rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" />
+</head>
+
+<body>
+    <a href="../index.html" id="back"><i class="ri-arrow-left-s-line"></i> Back to Task Manager</a>
+    <main>
+        <h1>DOM Demonstration</h1>
+
+        <section class="demo-section">
+            <h2>The Rendering Pipeline</h2>
+            <div class="pipeline-container">
+                <div class="branches">
+                    <div class="branch">
+                        <div class="card">HTML</div>
+                        <i class="ri-arrow-down-line arrow"></i>
+                        <div class="card">Parsing</div>
+                        <i class="ri-arrow-down-line arrow"></i>
+                        <div class="card">Tokenization</div>
+                        <i class="ri-arrow-down-line arrow"></i>
+                        <div class="card highlight">DOM Tree</div>
+                    </div>
+
+                    <div class="branch">
+                        <div class="card">CSS</div>
+                        <i class="ri-arrow-down-line arrow"></i>
+                        <div class="card highlight">CSSOM Tree</div>
+                    </div>
+                </div>
+
+                <div class="merge-section">
+                    <div class="merge-arrows">
+                        <i class="ri-arrow-right-down-line arrow"></i>
+                        <i class="ri-arrow-left-down-line arrow"></i>
+                    </div>
+                    <div class="card final-card">Render Tree</div>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section class="demo-section">
+            <h2>Event Propagation & Delegation</h2>
+            <div class="events-container">
+
+                <div class="dom-visualizer">
+                    <div id="grandparent" class="dom-node">
+                        Grandparent
+                        <div id="parent" class="dom-node">
+                            Parent
+                            <div id="child" class="dom-node child-node">
+                                Child (Click Me!)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="log-panel">
+                    <div class="log-header">
+                        <h3>Event Log</h3>
+                        <button id="clear-log"><i class="ri-delete-bin-6-line"></i></button>
+                    </div>
+                    <ul id="log"></ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

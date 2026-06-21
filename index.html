@@ -1,47 +1,57 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Task Manager | DOM</title>
-        <link rel="stylesheet" href="style.css" />
-        <link preload rel="stylesheet" 
-            href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"/>
-        <link rel="shortcut icon" type="image/x-icon" 
-            href="https://ssl.gstatic.com/keep/icon_2026_v2_192.png"/>
-    </head>
 
-    <body>
-        <main>
-            <h1>
-                <img src="https://www.gstatic.com/images/branding/productlogos/keep_2026/v2/web-48dp/logo_keep_2026_color_1x_web_48dp.png" alt="Logo" id="headLogo"/> Task Manager
-            </h1>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="#">
-                            <img src="https://www.gstatic.com/images/branding/productlogos/keep_2026/v2/web-48dp/logo_keep_2026_color_1x_web_48dp.png" alt="Logo" id="logo"/>
-                        </a>
-                    </li>
-                    <li>
-                        <div id="mid">
-                            <input type="text" name="search" id="search" placeholder="Search"/>
-                            <select name="tags" id="tags">
-                                <!-- <option value="">All</option>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager | DOM</title>
+    <link rel="stylesheet" href="style.css" />
+    <link preload rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://ssl.gstatic.com/keep/icon_2026_v2_192.png" />
+</head>
+
+<body>
+
+    <main>
+        <h1>
+            <img src="https://www.gstatic.com/images/branding/productlogos/keep_2026/v2/web-48dp/logo_keep_2026_color_1x_web_48dp.png"
+                alt="Logo" id="headLogo" /> Task Manager
+        </h1>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="https://www.gstatic.com/images/branding/productlogos/keep_2026/v2/web-48dp/logo_keep_2026_color_1x_web_48dp.png"
+                            alt="Logo" id="logo" />
+                    </a>
+                </li>
+                <li>
+                    <div id="mid">
+                        <input type="text" name="search" id="search" placeholder="Search" />
+                        <select name="tags" id="tags">
+                            <!-- <option value="">All</option>
                                 <option value="Normal">Normal</option>
                                 <option value="Urgent">Urgent</option> -->
-                            </select>
-                            <button id="taskAdd">+</button>
-                        </div>
-                    </li>
-                    <li>
-                        <button id="theme"><i class="ri-moon-line"></i></button>
-                    </li>
-                </ul>
-            </nav>
+                        </select>
+                        <button id="taskAdd">+</button>
+                    </div>
+                </li>
+                <li>
+                    <div id="counts">
+                        <p id="pending"><i class="ri-time-line"></i> <span id="pendingCount"></span></p>
+                        <p id="complete"><i class="ri-check-line"></i> <span id="completeCount"></span></p>
+                    </div>
+                    <div id="delAllTasks" onclick="delAll()"> 
+                        <i class="ri-delete-bin-6-line"></i> <span>All Tasks</span>
+                    </div>
 
-            <div id="hero">
-                <!-- <div class="card">
+                    <button id="theme"><i class="ri-moon-line"></i></button>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="hero">
+            <!-- <div class="card">
                     <div class="card-top">
                         <h3 class="title">Task 1</h3>
                         <input type="checkbox" name="select" id="select" />
@@ -65,26 +75,29 @@
                         ></i>
                     </div>
                 </div> -->
-            </div>
-        </main>
-
-        <div id="form">
-            <form action="">
-                <div class="top">
-                    <i class="ri-arrow-left-long-line" id="cancel"></i>
-                </div>
-                <input type="text" name="title" id="formTitle" placeholder="Task Title"/>
-                <textarea name="description" id="formDescription" placeholder="Task Description"></textarea>
-                <div class="bottom">
-                    <select name="tags" id="formTags">
-                        <!-- <option value="Urgent">Urgent</option>
-                        <option value="Normal">Normal</option> -->
-                    </select>
-                    <button id="submit">SUBMIT</button>
-                </div>
-            </form>
         </div>
+    </main>
 
-        <script src="script.js"></script>
-    </body>
+    <a href="./domDtls/index.html" id="dom">DOM Details <i class="ri-arrow-right-up-line"></i></a>
+
+    <div id="form">
+        <form action="">
+            <div class="top">
+                <i class="ri-arrow-left-long-line" id="cancel"></i>
+            </div>
+            <input type="text" name="title" id="formTitle" placeholder="Task Title" />
+            <textarea name="description" id="formDescription" placeholder="Task Description"></textarea>
+            <div class="bottom">
+                <select name="tags" id="formTags">
+                    <!-- <option value="Urgent">Urgent</option>
+                        <option value="Normal">Normal</option> -->
+                </select>
+                <button id="submit">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
 </html>
