@@ -41,7 +41,7 @@
                         <p id="pending"><i class="ri-time-line"></i> <span id="pendingCount"></span></p>
                         <p id="complete"><i class="ri-check-line"></i> <span id="completeCount"></span></p>
                     </div>
-                    <div id="delAllTasks" onclick="delAll()"> 
+                    <div id="delAllTasks"> 
                         <i class="ri-delete-bin-6-line"></i> <span>All Tasks</span>
                     </div>
 
@@ -85,6 +85,7 @@
             <div class="top">
                 <i class="ri-arrow-left-long-line" id="cancel"></i>
             </div>
+            <input type="text" name="id" id="formId" placeholder="Task Id" hidden/>
             <input type="text" name="title" id="formTitle" placeholder="Task Title" />
             <textarea name="description" id="formDescription" placeholder="Task Description"></textarea>
             <div class="bottom">
